@@ -27,6 +27,7 @@ import numpy as np
 import torch
 from fairseq import (
     checkpoint_utils,
+    metrics,
     options,
     quantization_utils,
     tasks,
@@ -38,7 +39,7 @@ from fairseq.dataclass.configs import FairseqConfig
 from fairseq.dataclass.utils import convert_namespace_to_omegaconf
 from fairseq.distributed import fsdp_enable_wrap, fsdp_wrap, utils as distributed_utils
 from fairseq.file_io import PathManager
-from fairseq.logging import meters, metrics, progress_bar
+from fairseq.logging import meters, progress_bar
 from fairseq.model_parallel.megatron_trainer import MegatronTrainer
 from fairseq.trainer import Trainer
 from omegaconf import DictConfig, OmegaConf

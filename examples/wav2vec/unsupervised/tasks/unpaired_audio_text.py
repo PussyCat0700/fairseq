@@ -12,7 +12,7 @@ import os
 from typing import Optional
 import torch
 
-from fairseq.logging import metrics
+from fairseq import metrics
 from fairseq.tasks import FairseqTask, register_task
 from ..data import ExtractedFeaturesDataset, RandomInputDataset
 

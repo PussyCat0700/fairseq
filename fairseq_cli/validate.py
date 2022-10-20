@@ -11,9 +11,9 @@ from argparse import Namespace
 from itertools import chain
 
 import torch
-from fairseq import checkpoint_utils, distributed_utils, options, utils
+from fairseq import checkpoint_utils, distributed_utils, metrics, options, utils
 from fairseq.dataclass.utils import convert_namespace_to_omegaconf
-from fairseq.logging import metrics, progress_bar
+from fairseq.logging import progress_bar
 from fairseq.utils import reset_logging
 from omegaconf import DictConfig
 

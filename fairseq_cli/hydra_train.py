@@ -9,7 +9,8 @@ import os
 
 from fairseq.dataclass.initialize import add_defaults, hydra_init
 from fairseq_cli.train import main as pre_main
-from fairseq import distributed_utils, metrics
+from fairseq import metrics
+from fairseq.distributed import utils as distributed_utils
 from fairseq.dataclass.configs import FairseqConfig
 from fairseq.utils import reset_logging
 

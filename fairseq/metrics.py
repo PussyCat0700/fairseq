@@ -16,7 +16,7 @@ import uuid
 from collections import defaultdict
 from typing import Callable, List, Optional
 
-from .meters import *
+from .logging.meters import *
 
 
 # Aggregation contexts are considered "active" when inside the scope
