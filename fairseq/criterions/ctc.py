@@ -7,6 +7,7 @@
 import math
 from argparse import Namespace
 from dataclasses import dataclass, field
+import pdb
 from omegaconf import II
 from typing import Optional
 
@@ -125,22 +126,22 @@ class CtcCriterion(FairseqCriterion):
 
         pad_mask = (sample["target"] != self.pad_idx) & (
             sample["target"] != self.eos_idx
-        )
+        )  # [24, 169], same as targets_flat
         targets_flat = sample["target"].masked_select(pad_mask)
         if "target_lengths" in sample:
             target_lengths = sample["target_lengths"]
         else:
             target_lengths = pad_mask.sum(-1)
-
+        # pdb.set_trace()
         with torch.backends.cudnn.flags(enabled=False):
             loss = F.ctc_loss(
-                lprobs,
-                targets_flat,
-                input_lengths,
-                target_lengths,
-                blank=self.blank_idx,
+                lprobs, #(393T, 24B, 32dict_ltr)
+                targets_flat, #(2933)
+                input_lengths, #(393) * 24
+                target_lengths, #(differnet sizes) * 24
+                blank=self.blank_idx, # 0
                 reduction="sum",
-                zero_infinity=self.zero_infinity,
+                zero_infinity=self.zero_infinity, # True
             )
 
         ntokens = (

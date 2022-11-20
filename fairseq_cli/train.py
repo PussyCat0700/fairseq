@@ -11,6 +11,7 @@ import argparse
 import logging
 import math
 import os
+import pdb
 import sys
 from typing import Dict, Optional, Any, List, Tuple, Callable
 
@@ -87,6 +88,7 @@ def main(cfg: FairseqConfig) -> None:
 
     # Setup task, e.g., translation, language modeling, etc.
     task = tasks.setup_task(cfg.task)
+    # task.state.target_dictionary = task.target_dictionary()
 
     assert cfg.criterion, "Please specify criterion to train a model"
 
@@ -469,7 +471,7 @@ def validate(
             task.post_validate(trainer.get_model(), stats, agg)
 
         progress.print(stats, tag=subset, step=trainer.get_num_updates())
-
+        # pdb.set_trace()
         valid_losses.append(stats[cfg.checkpoint.best_checkpoint_metric])
     return valid_losses
 

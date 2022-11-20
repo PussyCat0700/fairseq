@@ -1,5 +1,7 @@
 # @package _group_
-
+# path="/home/yfliu/datasets/LibriSpeech/dev-clean"
+# cd /home/yfliu/av_hubert/fairseq/examples/hubert
+# fairseq-hydra-train --config-dir ./config/finetune --config-name base_10h task.data=$path task.label_dir=$path model.w2v_path="/home/yfliu/av_hubert/fairseq/examples/hubert/hubert_base_ls960.pt"
 common:
   fp16: true
   log_format: json
